@@ -21,13 +21,20 @@
         <!-- Main header/title for the login form -->
         <h2>Login</h2>
         
+        <!-- Display action messages and errors -->
+        <s:actionmessage />
+        <s:actionerror />
+
+        <!-- Display field errors -->
+        <s:fielderror />
+        
         <!-- Struts2 form tag to create the login form. It posts the form data to the specified action URL -->
         <s:form action="loginAction" class="LoginForm">
             <!-- Text field for the user to input their username -->
-            <s:textfield label="User Name" name="userName" class="formTextField" />
+            <s:textfield label="User Name" name="loginInfo.userName" class="formTextField" />
             
             <!-- Password field for the user to input their password. This ensures the typed content is hidden -->
-            <s:password label="Password" name="password" class="formTextField" />
+            <s:password label="Password" name="loginInfo.password" class="formTextField" />
             
             <!-- Submit button to submit the form -->
             <s:submit value="Login" class="actionBtn" />

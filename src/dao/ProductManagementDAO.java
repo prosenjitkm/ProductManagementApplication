@@ -7,20 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import dbutil.DBUtil;
+import lombok.extern.log4j.Log4j2;
 import pojo.Product;
 
-// Import the Log4j classes
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+@Log4j2
 public class ProductManagementDAO {
-	
-	// Initialize a logger for this class
-    private static final Logger logger = LogManager.getLogger(ProductManagementDAO.class);
     
     public static Product getProductById(String productId) {
     	
-        logger.info("Attempting to get product by ID: {}", productId);
+        log.info("Attempting to get product by ID: {}", productId);
         Product product = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -41,17 +36,17 @@ public class ProductManagementDAO {
                     resultSet.getString("PROD_CATEGORY"),
                     resultSet.getInt("PROD_PRICE")
                 );
-                logger.info("Product found: {}", product);
+                log.info("Product found: {}", product);
             } else {
-                logger.warn("No product found with ID: {}", productId);
+            	log.warn("No product found with ID: {}", productId);
             }
             
         } catch (SQLException e) {
-            logger.error("Database operation failed: ", e);
+        	log.error("Database operation failed: ", e);
         } catch (NullPointerException e) {
-            logger.error("Null value encountered: ", e);
+        	log.error("Null value encountered: ", e);
         } catch (Exception e) {
-            logger.error("An unexpected error occurred: ", e);
+        	log.error("An unexpected error occurred: ", e);
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -61,7 +56,7 @@ public class ProductManagementDAO {
     
     public static int deleteProduct (Product product) {
     	
-    	logger.info("Attempting to delete product: {}", product);
+    	log.info("Attempting to delete product: {}", product);
     	
     	int status = 0;
     	Connection connection = null;
@@ -76,16 +71,16 @@ public class ProductManagementDAO {
     		status = preparedStatement.executeUpdate();
     		
             if(status == 1) {
-                logger.info("Product deleted successfully.");
+            	log.info("Product deleted successfully.");
             } else {
-                logger.warn("No product found with ID: {}", product.getProductId());
+            	log.warn("No product found with ID: {}", product.getProductId());
             }
 	    } catch (SQLException e) {
-	        logger.error("Database operation failed: ", e);
+	    	log.error("Database operation failed: ", e);
 	    } catch (NullPointerException e) {
-	        logger.error("Null value encountered: ", e);
+	    	log.error("Null value encountered: ", e);
 	    } catch (Exception e) {
-	        logger.error("An unexpected error occurred: ", e);
+	    	log.error("An unexpected error occurred: ", e);
 	    } finally {
 	        // Ensure resources are closed
 	        closeResources(connection, preparedStatement, null);
@@ -96,7 +91,7 @@ public class ProductManagementDAO {
     
     public static int updateProduct(Product product) {
 
-        logger.info("Attempting to update product: {}", product);
+    	log.info("Attempting to update product: {}", product);
         
         int status = 0; // Indicates the number of updated rows
         Connection connection = null;
@@ -119,17 +114,17 @@ public class ProductManagementDAO {
             status = preparedStatement.executeUpdate();
             
             if(status == 1) {
-                logger.info("Product updated successfully.");
+            	log.info("Product updated successfully.");
             } else {
-                logger.warn("No product found with ID: {}", product.getProductId());
+            	log.warn("No product found with ID: {}", product.getProductId());
             }
             
         } catch (SQLException e) {
-            logger.error("Database operation failed: ", e);
+        	log.error("Database operation failed: ", e);
         } catch (NullPointerException e) {
-            logger.error("Null value encountered: ", e);
+        	log.error("Null value encountered: ", e);
         } catch (Exception e) {
-            logger.error("An unexpected error occurred: ", e);
+        	log.error("An unexpected error occurred: ", e);
         } finally {
             // Ensure resources are closed
             closeResources(connection, preparedStatement, null);
@@ -141,7 +136,7 @@ public class ProductManagementDAO {
     
     public static int addProduct(Product product) {
     	
-    	logger.info("Attempting to add product: " + product);
+    	log.info("Attempting to add product: " + product);
     	int status = 0;
     	Connection connection = null;
     	PreparedStatement preparedStatement = null;
@@ -151,30 +146,30 @@ public class ProductManagementDAO {
     		connection = DBUtil.getConnection();
     		preparedStatement = connection.prepareStatement(sql);
     		
-            logger.info("Setting product details to PreparedStatement.");
+    		log.info("Setting product details to PreparedStatement.");
             
             preparedStatement.setString(1, product.getProductId());
-            logger.debug("Set product ID to: {}", product.getProductId());
+            log.debug("Set product ID to: {}", product.getProductId());
             
             preparedStatement.setString(2, product.getProductName());
-            logger.debug("Set product name to: {}", product.getProductName());
+            log.debug("Set product name to: {}", product.getProductName());
             
             preparedStatement.setString(3, product.getProductCategory());
-            logger.debug("Set product category to: {}", product.getProductCategory());
+            log.debug("Set product category to: {}", product.getProductCategory());
             
             preparedStatement.setInt(4, product.getProductPrice());
-            logger.debug("Set product price to: {}", product.getProductPrice());
+            log.debug("Set product price to: {}", product.getProductPrice());
             
     		status = preparedStatement.executeUpdate();
 		  
-    		logger.info("Product added successfully with status code: " + status);}
+    		log.info("Product added successfully with status code: " + status);}
     	
     	catch (SQLException e){
-    			logger.error("Database operation failed: ", e); }
+    		log.error("Database operation failed: ", e); }
     	catch (NullPointerException e){
-    		logger.error("Null value encountered: ", e);}
+    		log.error("Null value encountered: ", e);}
     	catch (Exception e){
-    		logger.error("An unexpected error occurred: ", e); }
+    		log.error("An unexpected error occurred: ", e); }
     	
     	finally {
     		closeResources(connection, preparedStatement, null); }
@@ -184,7 +179,7 @@ public class ProductManagementDAO {
 	 
 
     public static List<Product> getAllProducts() {
-        logger.info("Fetching all products.");
+    	log.info("Fetching all products.");
 
         List<Product> productList = new ArrayList<>();
         Connection connection = null;
@@ -207,12 +202,12 @@ public class ProductManagementDAO {
                 productList.add(product);
             }
             
-            logger.info("Fetched all products successfully.");
+            log.info("Fetched all products successfully.");
 
         } catch (SQLException e) {
-            logger.error("Database operation failed: ", e);
+        	log.error("Database operation failed: ", e);
         } catch (Exception e) {
-            logger.error("An unexpected error occurred: ", e);
+        	log.error("An unexpected error occurred: ", e);
         } finally {
             closeResources(connection, preparedStatement, resultSet);
         }
@@ -226,10 +221,10 @@ public class ProductManagementDAO {
             if (preparedStatement != null) preparedStatement.close();
             if (connection != null) connection.close();
 
-            logger.info("Database resources closed successfully.");
+            log.info("Database resources closed successfully.");
 
         } catch (Exception e) {
-            logger.error("Failed to close resources: ", e);
+        	log.error("Failed to close resources: ", e);
         }
     }
 }

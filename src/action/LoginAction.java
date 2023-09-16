@@ -7,8 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 import pojo.LoginInfo;
 
 @Getter
@@ -16,18 +15,12 @@ import pojo.LoginInfo;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Log4j2
 public class LoginAction extends ActionSupport {
 	
 	private static final long serialVersionUID = 1L;
 	
-	// Initialize Log4j2 logger
-	private static final Logger logger = LogManager.getLogger(LoginAction.class);
-	
-	// Represents the entered username for login.
-	private String userName;
-	
-	// Represents the entered password for login.
-	private String password;
+	private LoginInfo loginInfo;
 
 	/**
 	 * Executes the login action.
@@ -39,19 +32,19 @@ public class LoginAction extends ActionSupport {
 	public String execute() {
 		try {
 			// Validate the credentials using the DAO.
-			if (LoginDAO.isUserValid(new LoginInfo(userName, password))) {
-				logger.info("User authenticated successfully.");
+			if (LoginDAO.isUserValid(loginInfo)) {
+				log.info("User authenticated successfully.");
 				return SUCCESS;
 			} else {
 				// If credentials are invalid, set an error message.
 				addActionError("Invalid username or password.");
-				logger.warn("Invalid username or password entered.");
+				log.warn("Invalid username or password entered.");
 				return INPUT;
 			}
 		}
 		catch (Exception e) {
 			// If any exception occurs, log it and set an error message.
-			logger.error("An exception occurred during the authentication process: ", e);
+			log.error("An exception occurred during the authentication process: ", e);
 			addActionError("An unexpected error occurred. Please try again later.");
 			return INPUT;
 		}
@@ -64,12 +57,16 @@ public class LoginAction extends ActionSupport {
 	 */
 	@Override
 	public void validate() {
-		if (userName == null || userName.trim().isEmpty()) {
-			addFieldError("userName", "Username cannot be empty.");
-		}
+	    if (loginInfo == null) {
+	        addFieldError("loginInfo", "Login information is missing.");
+	        return; // Return to avoid potential NullPointerExceptions in subsequent checks.
+	    }
+	    if (loginInfo.getUserName() == null || loginInfo.getUserName().trim().isEmpty()) {
+	        addFieldError("userName", "Username cannot be empty.");
+	    }
 
-		if (password == null || password.trim().isEmpty()) {
-			addFieldError("password", "Password cannot be empty.");
-		}
+	    if (loginInfo.getPassword() == null || loginInfo.getPassword().trim().isEmpty()) {
+	        addFieldError("password", "Password cannot be empty.");
+	    }
 	}
 }

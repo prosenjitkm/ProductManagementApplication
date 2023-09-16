@@ -70,12 +70,12 @@
                     <!-- Placeholder cells for Update and Delete actions. Actual actions can be implemented here. -->
                     <td>
                    		<!-- Use the stored productId for constructing the link -->
-                    	<a href="<s:url action='updateDataAction'><s:param name='productId' value='#tempProductId'/></s:url>">
+                    	<a href="<s:url action='updateDataAction'><s:param name='product.productId' value='#tempProductId'/></s:url>">
                     		<button class="actionBtn">Update</button>
                     	</a>
                     </td>
                     <td>
-                    	<a href="<s:url action='deleteAction'><s:param name='productId' value='#tempProductId'/></s:url>">
+                    	<a href="<s:url action='deleteAction'><s:param name='product.productId' value='#tempProductId'/></s:url>">
                     		<button class="actionBtn">Delete</button>
                     	</a>
                     </td>

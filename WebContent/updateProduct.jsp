@@ -16,16 +16,16 @@
 		<s:form action="updateAction" class="formTable">
 			
 			<!-- Input field for Product ID -->
-			<s:textfield label="Product ID" name="productId" class="formTextField" readonly = "true" />
+			<s:textfield label="Product ID" name="product.productId" class="formTextField" readonly = "true" />
 			
 			<!-- Input field for Product Name -->
-			<s:textfield label="Product Name" name="productName" class="formTextField" />
+			<s:textfield label="Product Name" name="product.productName" class="formTextField" />
 			
 			<!-- Input field for Product Category (Typo fixed: Catagory to Category) -->
-			<s:textfield label="Product Category" name="productCategory" class="formTextField" />
+			<s:textfield label="Product Category" name="product.productCategory" class="formTextField" />
 			
 			<!-- Input field for Product Price -->
-			<s:textfield label="Product Price" name="productPrice" class="formTextField" />
+			<s:textfield label="Product Price" name="product.productPrice" class="formTextField" />
 			
 			<!-- Submit button for the form -->
 			<s:submit value="Update Product" class="actionBtn" />

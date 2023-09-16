@@ -4,15 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import dbutil.DBUtil;
+import lombok.extern.log4j.Log4j2;
 import pojo.LoginInfo;
-//Import Log4j classes.
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+@Log4j2
 public class LoginDAO {
-
-    // Create the logger for this class.
-    private static final Logger logger = LogManager.getLogger(LoginDAO.class);
-
 
     /**
      * This method validates if a user with the given details exists in the database.
@@ -28,7 +24,7 @@ public class LoginDAO {
 
         try {
         	
-        	logger.info("Attempting to validate user.");
+        	log.info("Attempting to validate user.");
         	
             // Get the database connection.
             connection = DBUtil.getConnection();
@@ -49,11 +45,11 @@ public class LoginDAO {
                 validStatus = true;
             }
             
-            logger.info("User validation complete.");
+            log.info("User validation complete.");
 
         } catch (Exception e) {
             // Log any exceptions that occur during the process.
-            logger.error("An error occurred during user validation.", e);
+        	log.error("An error occurred during user validation.", e);
             
         } finally {
             try {
@@ -65,7 +61,7 @@ public class LoginDAO {
                 }
                 DBUtil.closeConnection(connection);
             } catch (Exception e) {
-                logger.error("An error occurred while closing resources.", e);
+            	log.error("An error occurred while closing resources.", e);
             }
 
             // Close connection.

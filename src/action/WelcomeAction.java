@@ -5,9 +5,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.ProductManagementDAO;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import pojo.Product;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * This class represents the action taken when the user lands on the Welcome page.
@@ -18,12 +17,10 @@ import org.apache.logging.log4j.Logger;
  */
 @Getter
 @Setter
+@Log4j2
 public class WelcomeAction extends ActionSupport {
     
     private static final long serialVersionUID = 1L;
-    
-    // Initialize Log4j2 logger
-    private static final Logger logger = LogManager.getLogger(WelcomeAction.class);
     
     // List to store the products that will be displayed on the Welcome page.
     private List<Product> products;
@@ -37,11 +34,11 @@ public class WelcomeAction extends ActionSupport {
      */
     public String execute() {
         try {
-            logger.info("Executing welcome action");
+            log.info("Executing welcome action");
             initializeProducts();
         } catch(Exception e) {
             // Log the error and return the ERROR status.
-            logger.error("An exception occurred while executing the welcome action: ", e);
+        	log.error("An exception occurred while executing the welcome action: ", e);
             return ERROR;
         }
         return SUCCESS;
@@ -52,7 +49,7 @@ public class WelcomeAction extends ActionSupport {
      * The retrieved products are stored in the products list.
      */
     public void initializeProducts() {
-        logger.info("Initializing product list");
+    	log.info("Initializing product list");
         products = ProductManagementDAO.getAllProducts();
     }
 }

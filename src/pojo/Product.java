@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
-// Import Log4j classes.
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Represents a product entity.
@@ -17,13 +14,11 @@ import org.apache.logging.log4j.Logger;
 @Setter          // Lombok annotation to generate setter methods for all fields
 @NoArgsConstructor  // Lombok annotation to generate a no-argument constructor
 @ToString       // Lombok annotation to generate a toString method
+@Log4j2
 public class Product {
-	
-    // Create the logger for this class.
-    private static final Logger logger = LogManager.getLogger(Product.class);
 
     // Your fields go here...
-	
+
     /** 
      * Represents the unique identifier for the product.
      * Typically used for database operations and to distinguish products.
@@ -46,14 +41,13 @@ public class Product {
      * Represents the price of the product.
      * This value can be displayed to end-users and used in transactional operations.
      */
-    private Integer productPrice;
+    private int productPrice;  // Using primitive int, but choose based on your requirements
     
-    // Use logging in constructor to trace object creation.
-    public Product(String productId, String productName, String productCategory, Integer productPrice) {
+    public Product(String productId, String productName, String productCategory, int productPrice) {
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
         this.productPrice = productPrice;
-        logger.info("Product object created: " + this.toString());
+        log.info("Product object created: " + this);
     }
 }
