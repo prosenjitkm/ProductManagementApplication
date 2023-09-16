@@ -4,17 +4,15 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Utility class for managing database connections.
  * This class provides methods to establish a connection to the database and close it.
  */
+
+@Log4j2
 public class DBUtil {
-	
-    // Initialize Log4j2 logger
-	private static final Logger logger = LogManager.getLogger(DBUtil.class);
 
 	// The path to the database configuration file.
 	private static final String DB_CONFIG_FILE = "/dbconfig.properties";
@@ -46,11 +44,11 @@ public class DBUtil {
 
             // Establish and return the connection to the database using the retrieved properties.
             connection = DriverManager.getConnection(url, username, password);
-            logger.info("Database connection established successfully.");
+            log.info("Database connection established successfully.");
 		
 		}catch (Exception e) {
 			// Log any exception that arises during the connection establishment.
-			logger.error("An exception occurred while establishing the database connection: ", e);
+			log.error("An exception occurred while establishing the database connection: ", e);
 		}
 		
 		return connection;
@@ -68,11 +66,11 @@ public class DBUtil {
 			if (connection != null && !connection.isClosed()) {
 				// Close the connection.
 				connection.close();
-				logger.info("Database connection closed successfully.");
+				log.info("Database connection closed successfully.");
 			}
 		} catch (Exception e) {
 			// Log any exception that arises during the connection closure.
-			logger.error("An exception occurred while closing the database connection: ", e);
+			log.error("An exception occurred while closing the database connection: ", e);
 		}
 	}
 }
