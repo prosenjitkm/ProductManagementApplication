@@ -4,19 +4,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import dbutil.DBUtil;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import pojo.LoginInfo;
 
 @Log4j2
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoginDAO {
 
+	private LoginInfo userDetails;
     /**
      * This method validates if a user with the given details exists in the database.
      * 
      * @param userDetails Contains the username and password to validate.
      * @return Returns true if the user is valid; otherwise returns false.
      */
-    public static boolean isUserValid(LoginInfo userDetails) {
+    public boolean isUserValid() {
         boolean validStatus = false;  // Status flag to indicate if the user is valid or not.
         Connection connection = null;
         PreparedStatement preparedStatement = null;

@@ -31,8 +31,9 @@ public class LoginAction extends ActionSupport {
 	 */
 	public String execute() {
 		try {
+			LoginDAO loginDAO = new LoginDAO(loginInfo);
 			// Validate the credentials using the DAO.
-			if (LoginDAO.isUserValid(loginInfo)) {
+			if (loginDAO.isUserValid()) {
 				log.info("User authenticated successfully.");
 				return SUCCESS;
 			} else {
