@@ -14,57 +14,57 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/prose/Downloads/mysql-connector-java-8.0.30.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-fileupload-1.3.3.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/prose/Downloads/lombok.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-io-2.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-fileupload-1.3.3.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-lang3-3.6.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-io-2.4.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/freemarker-2.3.23.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/commons-lang3-3.6.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/javassist-3.20.0-GA.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/freemarker-2.3.23.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/log4j-api-2.8.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/javassist-3.20.0-GA.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/ognl-3.1.12.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/log4j-api-2.8.2.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/struts-2.5.12-min-lib/struts-2.5.12/lib/struts2-core-2.5.12.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/ognl-3.1.12.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/log4j-core-2.8.2.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Dependencies/struts-2.5.12-min-lib/struts-2.5.12/lib/struts2-core-2.5.12.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/lombok.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/prose/Downloads/log4j-core-2.8.2.jar">
+	<classpathentry kind="lib" path="D:/Useful JARs/mysql-connector-java-8.0.30.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
